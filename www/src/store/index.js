@@ -64,13 +64,14 @@ export default new vuex.Store({
     },
 
     actions: {
-        // addSong({ commit, dispatch, state }, song) {
-        //     state.activePlaylist.songs.push(song)
-        //     myTunes.put('/playlist/' + state.activePlaylist._id, state.activePlaylist)
-        //         .then(newList => {
-        //             commit('addSong', newList)
-        //         })
-        // },
+        addSong({ commit, dispatch, state }, song) {
+            debugger //error here you dont have an activePlaylist
+            state.activePlaylist.songs.push(song) 
+            server.put('/playlist/' + state.activePlaylist._id, state.activePlaylist)
+                .then(newList => {
+                    commit('addSong', newList)
+                })
+        },
 
         // findSong({ commit, dispatch }, query) {
         //     itunesApi.get('search?media=music&term=' + query)
